@@ -1,12 +1,13 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext} from 'react';
 import { useParams } from 'react-router-dom'
-
+import { ContextGlobal } from '../Components/utils/global.context';
 
 //Este componente debera ser estilado como "dark" o "light" dependiendo del theme del Context
 
 const Detail = () => {
   const params = useParams();
   const [data, setData] = useState(null);
+  const { state } = useContext(ContextGlobal);
  
   useEffect(() => {
     const fetchData = async () => {
@@ -25,7 +26,7 @@ const Detail = () => {
   // Consumiendo el parametro dinamico de la URL deberan hacer un fetch a un user en especifico
 
   return (
-    <div className="detail">
+    <div className="detail" style={{ background: state.theme === "dark" ? "#333333" : "#ffffff", color: state.theme === "dark" ? "#ffffff" : "#333333" }}>
        
 
       {/* aqui deberan renderizar la informacion en detalle de un user en especifico */}

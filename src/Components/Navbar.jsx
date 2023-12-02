@@ -5,17 +5,15 @@ import { Link } from 'react-router-dom'
 
 
 const Navbar = () => {
-  const { theme, dispatch } = useContext(ContextGlobal);
+  const { state, dispatch } = useContext(ContextGlobal);
 
   const toggleTheme = () => {
-    const newTheme = theme === 'light' ? 'dark' : 'light';
-    dispatch({ type: 'CHANGE_THEME', payload: newTheme });
+    dispatch({ type: "TOGGLE_THEME" });
   };
 
   return (
-    <nav>
-      {/* Aqui deberan agregar los liks correspondientes a las rutas definidas */}
-      {/* Deberan implementar ademas la logica para cambiar de Theme con el button */}
+    <nav  style={{ background: state.theme === "dark" ? "#333333" : "#ffffff", color: state.theme === "dark" ? "#ffffff" : "#333333" }}>
+      <Link to='/home'><img src='../../public/DH.ico'/></Link>
       <ul>
 
         <li>
